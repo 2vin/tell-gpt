@@ -35,7 +35,7 @@ class gpt_assistant:
             # Wait for the recording to finish
             sd.wait()
             # Save the recording to a WAV file
-            filename = '/var/tmp/recording.mp3'
+            filename = '/var/tmp/recording.wav'
             sf.write(filename, recording, samplerate)
 
 
@@ -67,14 +67,14 @@ class gpt_assistant:
             tts = gTTS(text=text, lang='en')
 
             # Save the speech to a file
-            filename = '/var/tmp/output.mp3'
+            filename = '/var/tmp/output.wav'
             tts.save(filename)
 
             # Play the speech using the default media player
             if self.tts:
                 os.system(f"mpg123 {filename}")
-            os.system("rm ./temp/recording.mp3")
-            os.system("rm ./temp/output.mp3")
+            os.system("rm ./temp/recording.wav")
+            os.system("rm ./temp/output.wav")
             
             return text
             
